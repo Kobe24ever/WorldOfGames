@@ -14,10 +14,10 @@ pipeline {
                 sh 'docker build -t games_img .'
             }
         }
-        stage('Run') {
+        stage('Run Services') {
             steps {
-                // Run your Dockerized application
-                sh 'docker run -d -p 8777:8777 -v /c/Users/Administrator/.jenkins/workspace/test_pipeline/Scores.txt:/app/Scores.txt --name games_cont games_img'
+                // Use Docker Compose to start services
+                sh 'docker-compose up -d'
             }
         }
         stage('Test') {
@@ -30,9 +30,8 @@ pipeline {
         }
         stage('Finalize') {
             steps {
-                // Stop and remove the Docker container
-                sh 'docker stop games_cont'
-                sh 'docker rm games_cont'
+                // Stop and remove the Docker Compose services
+                sh 'docker-compose down'
 
                 // Push the Docker image to DockerHub
                 sh 'docker push games_img'
