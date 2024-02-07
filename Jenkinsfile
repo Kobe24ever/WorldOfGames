@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your Docker image
-                sh 'docker build -t games_img .'
+                sh 'docker build --no-cache -t games_img .'
             }
         }
         stage('Run Services') {
