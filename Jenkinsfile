@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                dir('/c/Users/Administrator/.jenkins/workspace/test_pipeline/e2e.py') {
+                dir('/c/Users/Administrator/.jenkins/workspace/test_pipeline/tests/e2e.py') {
                     // Run your Selenium tests
                     sh 'python e2e.py'
                 }
