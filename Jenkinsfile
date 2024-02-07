@@ -17,7 +17,7 @@ pipeline {
         stage('Run') {
             steps {
                 // Run your Dockerized application
-                sh 'docker run -d -p 8777:8777 -v Scores.txt:/app/Scores.txt --name games_cont games_img'
+                sh 'docker run -d -p 8777:8777 -v C:\Users\Administrator\.jenkins\workspace\test_pipeline\Scores.txt --name games_cont games_img'
             }
         }
         stage('Test') {
