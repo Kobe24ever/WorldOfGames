@@ -5,4 +5,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY Scores.txt /Scores.txt
 ENV FLASK_APP=MainScores.py
 EXPOSE 5000
-CMD ["python", "MainScores.py"]
+CMD ["python", "/app.py"]
