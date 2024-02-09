@@ -12,9 +12,8 @@ pipeline {
             steps {
                 // Build your Docker image
                 sh 'docker build --no-cache -t games_img .'
-                docker run -t games_img /bin/bash
-                pip list
-
+                // Run a Docker container and execute pip list command inside it
+                sh 'docker run -t games_img /bin/bash -c "pip list"'
             }
         }
         stage('Run Services') {
