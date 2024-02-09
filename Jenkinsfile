@@ -12,7 +12,7 @@ pipeline {
             steps {
                 // Build your Docker image
                 sh 'docker build --no-cache -t games_img .'
-                docker run -it games_img /bin/bash
+                docker run -t games_img /bin/bash
                 pip list
 
             }
