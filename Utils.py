@@ -1,6 +1,6 @@
 import os
 
-SCORES_FILE_NAME = r"C:\Users\Amit Tal\Desktop\WorldOfGames\Scores.txt"
+SCORES_FILE_NAME = "Scores.txt"
 BAD_RETURN_CODE = -1
 
 
