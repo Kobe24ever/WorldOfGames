@@ -12,8 +12,12 @@ pipeline {
             steps {
                 // Build your Docker image
                 sh 'docker build --no-cache -t games_img .'
-                // Run a Docker container and execute pip list command inside it
-                docker run -t games_img powershell -c 'pip list'
+            }
+        }
+        stage('Check Dependencies') {
+            steps {
+                // Check installed packages inside the Docker container
+                sh 'docker run -t games_img pip list'
             }
         }
         stage('Run Services') {
@@ -24,10 +28,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                // dir('/c/Users/Administrator/.jenkins/workspace/test_pipeline/tests') {
-                    // Run your Selenium tests
-                    sh '/c/Users/Administrator/.jenkins/workspace/test_pipeline/tests/e2e.py'
-                // }
+                // Run your Selenium tests
+                sh '/c/Users/Administrator/.jenkins/workspace/test_pipeline/tests/e2e.py'
             }
         }
         stage('Finalize') {
