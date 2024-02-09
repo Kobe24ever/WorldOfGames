@@ -14,10 +14,13 @@ pipeline {
                 sh 'docker build --no-cache -t games_img .'
             }
         }
-        stage('Check Dependencies') {
+        stage('Prepare Environment') {
             steps {
-                // Check installed packages inside the Docker container
-                sh 'docker run -t games_img pip list'
+                 // Uninstall Flask and Werkzeug
+                sh 'pip uninstall -y Flask Werkzeug'
+
+                // Install specific versions of Flask and Werkzeug
+                sh 'pip install Flask==2.0.1 Werkzeug==2.0.1'
             }
         }
         stage('Run Services') {
