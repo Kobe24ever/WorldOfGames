@@ -7,8 +7,10 @@ url = "http://127.0.0.1:5000"
 
 def test_scores_service(url):
     try:
+        # Specify the path to the ChromeDriver executable
+        chrome_driver_path = r'C:\Users\Amit Tal\Downloads\chromedriver_win32'
         # Set up Chrome WebDriver
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(executable_path=chrome_driver_path)
         # Open the URL in the browser
         driver.get(url)
         # Find the score element
