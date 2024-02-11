@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 
 url = "http://127.0.0.1:5000"
 
@@ -8,7 +9,7 @@ url = "http://127.0.0.1:5000"
 def test_scores_service(url):
     try:
         # Set up Chrome WebDriver
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(ChromeDriverManager().install())
         # Open the URL in the browser
         driver.get(url)
         # Find the score element
